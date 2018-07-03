@@ -1,0 +1,14 @@
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - docker-compose run -d --no-deps web
+    - mocha
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - $DEPLOY
